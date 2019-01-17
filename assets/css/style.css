@@ -1,0 +1,18 @@
+body {
+    background-image: url("https://images.pexels.com/photos/640781/pexels-photo-640781.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+    background-color: #cccccc;
+}
+
+#title {
+    color: #cccccc
+}
+
+#instructions {
+    color: #cccccc;
+
+}
+
+.card {
+    height: 8rem;
+
+}
