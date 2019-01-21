@@ -4,11 +4,13 @@ body {
 }
 
 #title {
-    color: #cccccc
+    color: #cccccc;
+    text-align: center;
 }
 
 #instructions {
     color: #cccccc;
+    text-align: center;
 
 }
 
