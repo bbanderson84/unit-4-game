@@ -10,11 +10,19 @@ body {
 
 #instructions {
     color: #cccccc;
-    text-align: center;
+    text-align: center; 
 
 }
 
-.card {
-    height: 8rem;
+.crystals{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 
 }
+.crystal{
+    border: 2px solid green;
+    height: 150px;
+    width: 150px;
+}
+
