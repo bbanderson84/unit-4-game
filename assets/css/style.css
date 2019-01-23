@@ -21,8 +21,10 @@ body {
 
 }
 .crystal{
-    border: 2px solid green;
     height: 150px;
     width: 150px;
 }
 
+.card-body {
+    background-color: grey;
+}

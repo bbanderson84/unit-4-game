@@ -1,13 +1,26 @@
 
 //GLOBAL VARIABLES
 var count = 0;
-var userWins =0 ;
+var userWins = 0;
 var userLosses = 0;
 
-// // Assigning random value to target score, between 19 & 120.
 
-$(document).ready( function() {
+/// function starts new game
+var newGame = function () {
 
+
+
+    $(".crystals").empty();
+
+    var pics = [
+                "http://www.i2clipart.com/force_download.php?file=/cliparts/f/6/b/2/256135f6b28f33076659a692e2124de22a214c.png",
+                "https://pngimage.net/wp-content/uploads/2018/05/blue-crystal-png-5.png", 
+                "http://www.anchorageprogramming.org/wp-content/uploads/ruby.png",
+                "https://vignette.wikia.nocookie.net/azure-mines/images/1/14/Topaz_Ore_IRL.png/revision/latest?cb=20170107052336"];
+
+
+    // // Assigning random value to target score, between 19 & 120, prints score to page.
+            
     var randomNum = Math.floor((Math.random() * 120) + 19);
 
     $("#number-to-guess").html(randomNum);
@@ -15,29 +28,37 @@ $(document).ready( function() {
     console.log(randomNum);
 
 
-// var gameStart = function () {
-// for loop assigning random number from 1-12 to the crystal picture
 
-for(var i = 0; i < 4; i++){
+// for loop assigning random number from 1-12 to each crystal div picture
 
-    var crystalPoints = Math.floor(Math.random() * 12) + 1;
+    for (var i = 0; i < 4; i++) {
 
-     console.log(crystalPoints);
+        var crystalPoints = Math.floor(Math.random() * 12) + 1;
 
-    var crystal = $("<div>");
+         console.log(crystalPoints);
+
+        var crystal = $("<div>");
+
+        // assigns each div image from array for crystal, assigns class  and value to each one
+        crystal.css({"background-image":"url('" + pics[i] + "')", "background-size":"cover"});
         
-    crystal.attr({"class": "crystal","crystalvalue": crystalPoints});
+        crystal.attr({"class": "crystal","crystalvalue": crystalPoints});
 
-    $(".crystals").append(crystal);
+        $(".crystals").append(crystal);
 
     }
 
+}
 
-$(".crystal").on('click', function () {
+newGame();
+
+$(document).on('click', ".crystal", function () {
 
     console.log($(this).attr("crystalvalue"));
 
-    var crystalValue = parseInt($(this).attr('crystalvalue'));
+    var crystalValue = ($(this).attr("crystalvalue"));
+
+    crystalValue = parseInt(crystalValue);
 
     count += crystalValue;
 
@@ -45,22 +66,35 @@ $(".crystal").on('click', function () {
 
     $("#user-score").html(count);
 
-
-    if (count > randomNum){
+    if(count > randomNum){
 
         userLosses++;
-
+        console.log(userLosses);
         alert("YOU LOST!");
-    
+
+        count = 0;
+
         $("#user-losses").html(userLosses);
 
-    } else if (count === randomNum){
-        alert("YOU WON!");
-        userWins++;
-        $("#user-wins").html(userWins);
-    }
+        newGame();
 
-   
+    } 
+    
+    else if(count === randomNum){
+
+        alert("YOU WON!");
+
+        userWins++; 
+        console.log(userWins);
+        count = 0;
+
+        $("#user-wins").html(userWins);
+
+        newGame();
+
+        
+    }
+    
 });
 
 //     var crystalValue = ($(this).attr("valueofcrystal"));
@@ -269,4 +303,4 @@ $(".crystal").on('click', function () {
     //     // $("#user-losses").html(userLosses);
 
     // }
-});
+// });
