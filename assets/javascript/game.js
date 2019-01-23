@@ -3,12 +3,13 @@
 var count = 0;
 var userWins = 0;
 var userLosses = 0;
+var randomNum;
 
 $(document).ready (function () {
 
 
 /// function starts new game
-var newGame = function () {
+    var newGame = function () {
 
     $(".crystals").empty();
 
@@ -21,7 +22,7 @@ var newGame = function () {
 
     // // Assigning random value to target score, between 19 & 120, prints score to page.
             
-    var randomNum = Math.floor((Math.random() * 120) + 19);
+    randomNum = Math.floor((Math.random() * 120) + 19);
 
     $("#number-to-guess").html(randomNum);
 
@@ -54,6 +55,7 @@ newGame();
 
 // clicking on each crystal adds that specific crystals value to the user score
 $(document).on('click', ".crystal", function () {
+    console.log(randomNum);
 
     console.log($(this).attr("crystalvalue"));
 
@@ -67,8 +69,13 @@ $(document).on('click', ".crystal", function () {
 
     $("#user-score").html(count);
 
-    // if else is not working, it stopped working when i tried to add the newGame function for new game and reset. it does not display losses or wins , does not alert. This worked before I added newGame function
-    if(count > randomNum){
+    console.log('-------------------------------------')
+    console.log('randomNum: ', randomNum)
+    console.log('count: ', count);
+    console.log('-------------------------------------')
+
+    // checks if the count is larger than the random number given, if it is, adds loss, alerts user they lost and restarts game and values.
+    if (count > randomNum) {
 
         userLosses++;
      
@@ -82,7 +89,9 @@ $(document).on('click', ".crystal", function () {
 
     } 
     
-    else if(count === randomNum){
+        // checks if the count is equal to  the random number given, if it is, adds win, alerts user they won and restarts game and values.
+
+    else if (count === randomNum) {
 
         alert("YOU WON!");
 
